@@ -38,7 +38,7 @@ apis = [
 ]
 
 
-class TwiggleApi(BaseView):
+class Api(BaseView):
     @expose('/')
     def index(self):
         return self.render('index.html',
@@ -92,9 +92,9 @@ class TwiggleApi(BaseView):
             return False
 
 
-twiggle_api_view = TwiggleApi(category='Admin', name='Twiggle Api', url=endpoint)
-twiggle_api_bp = Blueprint(
-    'twiggle_api_bp',
+api_view = Api(category='Admin', name='Api', url=endpoint)
+api_bp = Blueprint(
+    'api_bp',
     __name__,
     template_folder='templates',
     static_folder='static',
