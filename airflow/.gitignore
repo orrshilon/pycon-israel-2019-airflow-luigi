@@ -1,0 +1,5 @@
+local_*
+*.log
+airflow-webserver.pid
+unittests.cfg
+logs/

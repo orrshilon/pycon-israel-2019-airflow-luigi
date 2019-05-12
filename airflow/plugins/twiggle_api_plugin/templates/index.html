@@ -1,0 +1,58 @@
+{% extends "airflow/master.html" %}
+{% block title %}Airflow - Twiggle Api Plugin{% endblock %}
+{% block head_css %}
+{{ super() }}
+{% endblock %}
+
+{% block body %}
+
+<style>
+    td, th {padding: 6px;}
+</style>
+
+<h1>Twiggle Api Plugin</h1>
+
+{% for api in apis %}
+<div>
+    <h3><a name="{{api.path}}">{{api.path}}</a></h3>
+    <h5>{{api.description}}</h5>
+    <h5>{{airflow_webserver_base_url}}{{rest_api_endpoint}}?{% for parameter in api.parameters %}&{{parameter.name}}=value{% endfor %}</h5>
+
+    <div>
+        <form method="GET"
+              target="_blank"
+              action="{{rest_api_endpoint}}/{{api.path}}"
+              enctype="application/x-www-form-urlencoded">
+
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                </tr>
+
+                {% for parameter in api.parameters %}
+                <tr>
+                    <td>{{parameter.name}}:</td>
+                    <td><input type="text" name="{{parameter.name}}"/></td>
+                </tr>
+                {% endfor %}
+
+                <tr>
+                    <td colspan="2"><input type="submit" class="btn btn-primary" value="Execute"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<br/>
+
+{% endfor %}
+
+<br/>
+
+{% endblock %}
+
+{% block tail %}
+{{ super() }}
+
+{% endblock %}
