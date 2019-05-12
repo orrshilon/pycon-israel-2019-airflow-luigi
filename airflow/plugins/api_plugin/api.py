@@ -54,7 +54,7 @@ class Api(BaseView):
     def trigger_dag(self):
         sleep_timeout = request.args.get('timeout', None)
         if not self.is_number(sleep_timeout):
-            return self._create_response(200, True, 'sleep_timeout parameter is not a number')
+            return self._create_response(400, False, 'sleep_timeout parameter is not a number')
         try:
             trigger = trigger_dag.trigger_dag('sleep_triggered', conf={'sleep_timeout': sleep_timeout})
             print(trigger)
