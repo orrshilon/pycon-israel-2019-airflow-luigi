@@ -57,7 +57,6 @@ class Api(BaseView):
             return self._create_response(400, False, 'sleep_timeout parameter is not a number')
         try:
             trigger = trigger_dag.trigger_dag('sleep_triggered', conf={'sleep_timeout': sleep_timeout})
-            print(trigger)
         except Exception as e:
             return self._create_response(400, False, str(e))
         return self._create_response(200, True, 'dag triggered with response: {}'.format(trigger))
@@ -77,7 +76,6 @@ class Api(BaseView):
 
     @staticmethod
     def _create_response(status_code: int, success: bool, message: str):
-        print(message)
         return jsonify({
             'result': 'success' if success else 'error',
             'message': message
