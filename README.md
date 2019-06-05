@@ -7,4 +7,7 @@ Data is Twiggle's bread and butter, so choosing the right data pipelining framew
 ### Description
 Organizing and scaling data pipelines is a common challenge many organizations face. Luigi and Airflow are the two most popular open source frameworks to help solve this task. We will present a quick overview and comparison of the two. Then we will take a deep dive, including code examples, into the special cases for which we used the frameworks at Twiggle.
 
-Among the examples we will discuss: Airflow as a highly available web server, and extending it with APIs for customers. Data processing using Dask and Spark in Luigi. * Code reuse in Luigi vs Airflow.
+Among the examples we will discuss: 
+* Airflow as a highly available web server, and extending it with APIs for customers. 
+* Data processing using Dask and Spark in Luigi. 
+* Code reuse in Luigi vs Airflow.
